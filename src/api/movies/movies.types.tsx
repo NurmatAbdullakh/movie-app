@@ -13,7 +13,7 @@ export interface IMoviesResponse {
 }
 
 export interface ISingleMovieResponse {
-  data: Array<IMovie>;
+  data: IMovie;
   code: number;
   message: string;
   status: boolean;
