@@ -11,15 +11,6 @@ export interface IMoviesResponse {
   status: boolean;
   tasix: boolean;
 }
-
-export interface ISingleMovieResponse {
-  data: IMovie;
-  code: number;
-  message: string;
-  status: boolean;
-  tasix: boolean;
-}
-
 export interface IMovie {
   ageLimit: number;
   cardType: string;
@@ -37,4 +28,23 @@ export interface IMovie {
   title: string;
   titleEn: string;
   year: number;
+}
+
+export interface IMovieDetailsResponse {
+  data: IMovieDetails;
+  code: number;
+  message: string;
+  status: boolean;
+  tasix: boolean;
+}
+
+export interface IMovieDetails {
+  description: string;
+  id: number;
+  poster: string;
+  title: string;
+  year: number;
+  genres: Array<{ id: number; slug: string; title: string }>;
+  countries: Array<{ id: number; slug: string; title: string }>;
+  actors: Array<{ id: number; fullName: string; photo: string }>;
 }

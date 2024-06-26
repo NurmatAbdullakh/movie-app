@@ -1,0 +1,10 @@
+.movies_cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(281px, 1fr));
+  gap: 26px;
+  gap: 10px;
+  padding: 10px;
+  @media (max-width: 622px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
