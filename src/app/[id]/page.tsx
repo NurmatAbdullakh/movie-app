@@ -6,8 +6,6 @@ export default async function SingleMoviePage({
   const res = await fetch(
     `https://api.cinerama.uz/test/movies/view?module_id=3&id=${43657}`,
     {
-      next: { revalidate: 2 },
-      cache: "no-store",
       headers: {
         Authorization: `Bearer DrTVm2Bi8pHE75xYsM94fjciuAhju2XM`,
       },
