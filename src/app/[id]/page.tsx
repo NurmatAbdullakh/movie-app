@@ -1,5 +1,3 @@
-import MovieDetails from "../_components/MovieDetails/MovieDetails";
-
 export default async function SingleMoviePage({
   params,
 }: {
@@ -8,6 +6,7 @@ export default async function SingleMoviePage({
   const res = await fetch(
     `https://api.cinerama.uz/test/movies/view?module_id=3&id=${params.id}`,
     {
+      next: { revalidate: 2 },
       cache: "no-store",
       headers: {
         Authorization: `Bearer DrTVm2Bi8pHE75xYsM94fjciuAhju2XM`,
@@ -16,5 +15,5 @@ export default async function SingleMoviePage({
   );
   const data = await res.json();
 
-  return <MovieDetails details={data?.data} />;
+  return <>{JSON.stringify(data)}</>;
 }
