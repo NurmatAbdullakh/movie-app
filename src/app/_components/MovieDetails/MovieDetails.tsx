@@ -15,6 +15,8 @@ interface props {
 }
 
 const MovieDetails = ({ details }: props) => {
+  console.log("details", details);
+
   return (
     <>
       <div className={styles.movie_details}>
