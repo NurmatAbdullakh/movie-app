@@ -9,7 +9,7 @@ interface props {
   details: IMovieDetails | undefined;
 }
 const MovieDetails = ({ details }: props) => {
-  console.log(details);
+  console.log("details", details);
 
   return (
     <div className={styles.movie_details}>
