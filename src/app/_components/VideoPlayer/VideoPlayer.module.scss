@@ -1,0 +1,28 @@
+.controls{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.playing-btn{
+    margin-right: 10px;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.progressbar{
+    flex: 1;
+    margin: 0 10px;
+    appearance: none;
+    background: #555;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+}
