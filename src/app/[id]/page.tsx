@@ -9,6 +9,7 @@ export default async function SingleMoviePage({
       headers: {
         Authorization: `Bearer DrTVm2Bi8pHE75xYsM94fjciuAhju2XM`,
       },
+      cache: "force-cache",
     }
   );
   const data = await res.json();
