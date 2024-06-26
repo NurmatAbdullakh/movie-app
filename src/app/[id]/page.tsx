@@ -4,7 +4,7 @@ export default async function SingleMoviePage({
   params: { id: string };
 }) {
   const res = await fetch(
-    `https://api.cinerama.uz/test/movies/view?module_id=3&id=${params.id}`,
+    `https://api.cinerama.uz/test/movies/view?module_id=3&id=${43657}`,
     {
       next: { revalidate: 2 },
       cache: "no-store",
