@@ -49,7 +49,7 @@ const VideoPlayer = () => {
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <ReactPlayer
         url="https://www.youtube.com/watch?v=U8XH3W0cMss"
-        controls={true}
+        controls={false}
         width="100%"
         height="100%"
         ref={playerRef}
