@@ -1,4 +1,3 @@
-"use client";
 import { IMovieDetails } from "@/api/movies/movies.types";
 import styles from "./MovieDetails.module.scss";
 import Image from "next/image";
