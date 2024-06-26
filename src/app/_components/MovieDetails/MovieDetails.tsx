@@ -1,8 +1,9 @@
 "use client";
-
 import { IMovieDetails } from "@/api/movies/movies.types";
 import styles from "./MovieDetails.module.scss";
 import Image from "next/image";
+import Actors from "../Actors/Actors";
+import SectionTitle from "../SectionTitle/Sectiontitle";
 
 interface props {
   details: IMovieDetails;
@@ -31,7 +32,6 @@ const MovieDetails = ({ details }: props) => {
             fill
           />
         </div>
-
         <h1 className={styles.movie_details__title}>{details?.title}</h1>
         <div className={`${styles.movie_details__year} xl-500`}>
           {details?.year}
@@ -40,45 +40,42 @@ const MovieDetails = ({ details }: props) => {
           {details?.description}
         </div>
 
-        <div className={styles.section_title}>Жанр</div>
-        <div className={styles.movie_details__genres_list}>
-          {details?.genres?.map((genre) => (
-            <p key={genre.id} className={`${styles.movie_details__badge} xs`}>
-              {genre.title}
-            </p>
-          ))}
-        </div>
+        {details?.genres && (
+          <>
+            <SectionTitle title="Жанр" />
 
-        <div className={styles.section_title}>Страна</div>
-        <div className={styles.movie_details__country}>
-          {details?.countries?.map((genre) => (
-            <p key={genre.id} className={`${styles.movie_details__badge} xs`}>
-              {genre.title}
-            </p>
-          ))}
-        </div>
+            <div className={styles.movie_details__genres_list}>
+              {details?.genres?.map((genre) => (
+                <p
+                  key={genre.id}
+                  className={`${styles.movie_details__badge} xs`}
+                >
+                  {genre.title}
+                </p>
+              ))}
+            </div>
+          </>
+        )}
+
+        {details?.countries && (
+          <>
+            <SectionTitle title="Страна" />
+            <div className={styles.movie_details__country}>
+              {details?.countries?.map((genre) => (
+                <p
+                  key={genre.id}
+                  className={`${styles.movie_details__badge} xs`}
+                >
+                  {genre.title}
+                </p>
+              ))}
+            </div>
+          </>
+        )}
         {details?.actors && (
           <>
-            <div className={styles.section_title}>Актеры</div>
-            <div className={styles.movie_details__actors}>
-              {details?.actors
-                ?.filter((a) => a.photo)
-                ?.map((actor) => (
-                  <div
-                    key={actor.id}
-                    className={styles.movie_details__actors_card}
-                  >
-                    <Image
-                      className={styles.actors__image}
-                      src={actor.photo}
-                      alt={actor.fullName}
-                      width={60}
-                      height={60}
-                    />
-                    <div className={styles.actors__name}>{actor.fullName}</div>
-                  </div>
-                ))}
-            </div>
+            <SectionTitle title="Актеры" />
+            <Actors actors={details?.actors} />
           </>
         )}
       </div>

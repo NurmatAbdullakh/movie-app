@@ -1,0 +1,38 @@
+	.movie_details {
+        
+        // .movie_details__actors
+        &__actors {
+            margin-bottom: 30px;
+            display: grid;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            
+        }
+
+      // .movie_details__actors_card
+
+      &__actors_card {
+         padding: 12px;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         border-radius: 12px;
+         background: #F7F7F7;
+
+         .actors__image {
+            width: 60px;
+            height: 60px;
+            border-radius: 10%;
+         }
+
+         .actors__name  {
+            font-family: "Inter";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 130%;
+         }
+      }
+}
