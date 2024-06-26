@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div className={`${styles.footer__container} container`} >
                 <Link href="/" className={styles.footer__logo}>
-                    <Image width={50} height={50} src="/images/Logo.png" alt="logo" />
+                    <Image width={50} height={50} src="/images/logo.png" alt="logo" />
                 </Link>
                 <div className={`${styles.footer__copyright} sm`}>© 2024</div>
             </div>
