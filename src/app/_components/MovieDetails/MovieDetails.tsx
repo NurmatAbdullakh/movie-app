@@ -6,17 +6,19 @@ import Actors from "../Actors/Actors";
 import SectionTitle from "../SectionTitle/Sectiontitle";
 
 interface props {
-  details: IMovieDetails;
+  details: IMovieDetails | undefined;
 }
 const MovieDetails = ({ details }: props) => {
+  console.log(details);
+
   return (
     <div className={styles.movie_details}>
       <div className={styles.movie_details__container}>
         <div className={styles.movie_details__banner}>
           <Image
             className={styles.movie_details__overlay}
-            src={details?.poster}
-            alt={details?.title}
+            src={details?.poster || ""}
+            alt={details?.title || ""}
             fill
           />
           <Image
@@ -27,8 +29,8 @@ const MovieDetails = ({ details }: props) => {
           />
           <Image
             className={styles.movie_details__poster}
-            src={details?.poster}
-            alt={details?.title}
+            src={details?.poster || ""}
+            alt={details?.title || ""}
             fill
           />
         </div>
