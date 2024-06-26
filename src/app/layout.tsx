@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   title: "Movies App",
   description:
     "Movies App - is a Next.js project, when you can watch top movies from top countries.",
+  twitter: {
+    card: "summary_large_image",
+    title: "Movies App",
+    description:
+      "Movies App - is a Next.js project, when you can watch top movies from top countries.",
+    images: [
+      "https://static.javatpoint.com/androidpages/images/movie-apps-for-android12.png",
+    ],
+  },
 };
 
 export default function RootLayout({
