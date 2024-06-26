@@ -12,6 +12,7 @@ const MovieCard = ({ movie }: { movie: IMovie }) => {
         alt={movie.title}
         fill
         priority={false}
+        loading="lazy"
       />
       <div className={styles.movie_overlay} />
       <div className={styles.movie_details}>

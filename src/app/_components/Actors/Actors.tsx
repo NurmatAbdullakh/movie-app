@@ -9,11 +9,11 @@ interface props {
 const Actors: React.FC<props> = ({ actors }) => {
   return (
     <>
-      <div className={styles.movie_details__actors}>
+      <div className={styles.actors}>
         {actors
           ?.filter((a) => a.photo)
           ?.map((actor) => (
-            <div key={actor.id} className={styles.movie_details__actors_card}>
+            <div key={actor.id} className={styles.actors_card}>
               <Image
                 className={styles.actors__image}
                 src={actor.photo}

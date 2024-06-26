@@ -16,7 +16,7 @@ export const useMoviesGetAllInfiniteQuery = () => {
   return useInfiniteQuery<IMoviesResponse, Error>({
     queryKey: ["MOVIES_GETALL_INFINITE"],
     queryFn: ({ pageParam }) =>
-      moviesService.getMovies({ page: Number(pageParam), items: 10 }),
+      moviesService.getMovies({ page: Number(pageParam), items: 8 }),
     refetchOnWindowFocus: false,
     retry: 1,
     refetchOnReconnect: false,
