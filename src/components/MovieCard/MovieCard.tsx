@@ -11,6 +11,7 @@ const MovieCard = ({ movie }: { movie: IMovie }) => {
         src={movie.poster}
         alt={movie.title}
         fill
+        priority
       />
       <div className={styles.movie_overlay} />
       <div className={styles.movie_details}>
