@@ -1,7 +1,7 @@
 "use client";
 
 import { IMovieDetails } from "@/api/movies/movies.types";
-import styles from "./MovieDetails.module.scss";
+import styles from "./Moviedetails?.module.scss";
 import Image from "next/image";
 
 interface props {
@@ -14,8 +14,8 @@ const MovieDetails = ({ details }: props) => {
         <div className={styles.movie_details__banner}>
           <Image
             className={styles.movie_details__overlay}
-            src={details.poster}
-            alt={details.title}
+            src={details?.poster}
+            alt={details?.title}
             fill
           />
           <Image
@@ -26,23 +26,23 @@ const MovieDetails = ({ details }: props) => {
           />
           <Image
             className={styles.movie_details__poster}
-            src={details.poster}
-            alt={details.title}
+            src={details?.poster}
+            alt={details?.title}
             fill
           />
         </div>
 
-        <h1 className={styles.movie_details__title}>{details.title}</h1>
+        <h1 className={styles.movie_details__title}>{details?.title}</h1>
         <div className={`${styles.movie_details__year} xl-500`}>
-          {details.year}
+          {details?.year}
         </div>
         <div className={`${styles.movie_details__description} md`}>
-          {details.description}
+          {details?.description}
         </div>
 
         <div className={styles.section_title}>Жанр</div>
         <div className={styles.movie_details__genres_list}>
-          {details.genres.map((genre) => (
+          {details?.genres?.map((genre) => (
             <p key={genre.id} className={`${styles.movie_details__badge} xs`}>
               {genre.title}
             </p>
@@ -51,19 +51,19 @@ const MovieDetails = ({ details }: props) => {
 
         <div className={styles.section_title}>Страна</div>
         <div className={styles.movie_details__country}>
-          {details.countries.map((genre) => (
+          {details?.countries?.map((genre) => (
             <p key={genre.id} className={`${styles.movie_details__badge} xs`}>
               {genre.title}
             </p>
           ))}
         </div>
-        {details.actors && (
+        {details?.actors && (
           <>
             <div className={styles.section_title}>Актеры</div>
             <div className={styles.movie_details__actors}>
-              {details.actors
-                .filter((a) => a.photo)
-                .map((actor) => (
+              {details?.actors
+                ?.filter((a) => a.photo)
+                ?.map((actor) => (
                   <div
                     key={actor.id}
                     className={styles.movie_details__actors_card}
