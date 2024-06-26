@@ -1,13 +1,19 @@
-"use client";
-import { useMoviesGetByIdQuery } from "@/api/movies/movies.service";
 import MovieDetails from "../_components/MovieDetails/MovieDetails";
 
-export default function SingleMoviePage({
+export default async function SingleMoviePage({
   params,
 }: {
   params: { id: string };
 }) {
-  const { data } = useMoviesGetByIdQuery(Number(params.id));
+  const res = await fetch(
+    `https://api.cinerama.uz/test/movies/view?module_id=3&id=${params.id}`,
+    {
+      headers: {
+        Authorization: `Bearer DrTVm2Bi8pHE75xYsM94fjciuAhju2XM`,
+      },
+    }
+  );
+  const rep = await res.json();
 
-  return <MovieDetails details={data?.data} />;
+  return <MovieDetails details={rep?.data} />;
 }
