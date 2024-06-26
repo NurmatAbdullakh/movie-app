@@ -2,7 +2,7 @@
 {
     "headers": [
         {
-      "source": "/:path*",
+      "source": "*",
       "headers": [
         {
           "key": "Autorization",
