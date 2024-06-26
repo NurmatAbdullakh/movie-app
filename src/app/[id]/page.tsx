@@ -14,7 +14,7 @@ export default async function SingleMoviePage({
       },
     }
   );
-  const rep = await res.json();
+  const data = await res.json();
 
-  return <MovieDetails details={rep?.data} />;
+  return <MovieDetails details={data?.data} />;
 }
