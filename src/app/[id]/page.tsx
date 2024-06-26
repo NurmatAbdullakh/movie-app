@@ -1,5 +1,5 @@
 import { moviesService } from "@/api/movies/movies.service";
-import MovieDetails from "@/components/MovieDetails/MovieDetails";
+import MovieDetails from "../_components/MovieDetails/MovieDetails";
 
 export default async function SingleMoviePage({
   params,
