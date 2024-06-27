@@ -14,8 +14,6 @@ const VideoPlayer = () => {
   const playerRef = useRef<ReactPlayer>(null);
 
   const handleTogglePlayPause = () => {
-    console.log("Toggle play/pause");
-
     setPlaying(!playing);
   };
 
@@ -77,7 +75,6 @@ const VideoPlayer = () => {
       <ReactPlayer
         onPause={() => setPlaying(false)}
         onPlay={() => setPlaying(true)}
-        onReady={() => setDuration(playerRef.current?.getDuration() || 0)}
         url="https://www.youtube.com/watch?v=1rU7ShHAGXQ"
         controls={false}
         width="100%"
@@ -112,8 +109,12 @@ const VideoPlayer = () => {
         <div className={styles.controlsBottom}>
           <button className={styles.playingBtn} onClick={handleTogglePlayPause}>
             <Image
-              src={playing ? "/pause-svgrepo-com.svg" : "/play-svgrepo-com.svg"}
-              alt="fullscreen"
+              src={
+                playing
+                  ? "/icons/pause-svgrepo-com.svg"
+                  : "/icons/play-svgrepo-com.svg"
+              }
+              alt="play/pause"
               width={20}
               height={20}
             />
@@ -122,9 +123,11 @@ const VideoPlayer = () => {
             <button className={styles.muteBtn} onClick={handleToggleMute}>
               <Image
                 src={
-                  muted ? "/mute-svgrepo-com.svg" : "/unmute-svgrepo-com.svg"
+                  muted
+                    ? "/icons/mute-svgrepo-com.svg"
+                    : "/icons/unmute-svgrepo-com.svg"
                 }
-                alt="fullscreen"
+                alt="mute/unmute"
                 width={20}
                 height={20}
               />
@@ -142,7 +145,7 @@ const VideoPlayer = () => {
           </div>
           <button className={styles.fullscreenBtn} onClick={handleFullscreen}>
             <Image
-              src="/fullscreen-svgrepo-com.svg"
+              src="/icons/fullscreen-svgrepo-com.svg"
               alt="fullscreen"
               width={20}
               height={20}
