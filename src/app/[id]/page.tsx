@@ -2,7 +2,6 @@ import { IMovieDetailsResponse } from "@/api/movies/movies.types";
 import { FC } from "react";
 import MovieDetails from "../_components/MovieDetails/MovieDetails";
 
-// Define types for the parameters and movie data
 interface Params {
   id: string;
 }
