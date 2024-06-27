@@ -14,7 +14,7 @@ const SingleMoviePage: FC<{ params: Params }> = async ({ params }) => {
         headers: {
           Authorization: `Bearer DrTVm2Bi8pHE75xYsM94fjciuAhju2XM`,
         },
-        cache: "no-store",
+        cache: "force-cache",
       }
     );
 
