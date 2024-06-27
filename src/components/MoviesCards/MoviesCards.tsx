@@ -4,10 +4,10 @@ import { useMoviesGetAllInfiniteQuery } from "@/api/movies/movies.service";
 import useIntersectionObserver from "@/hooks/useIntersectiongObserver";
 import { useEffect, useRef } from "react";
 import MovieCard from "../MovieCard/MovieCard";
-import styles from "./MoviesList.module.scss";
+import styles from "./MoviesCards.module.scss";
 import Loader from "../Loader/Loader";
 
-export const MoviesList = () => {
+export const MoviesCards = () => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [intersecting] = useIntersectionObserver(targetRef);
 

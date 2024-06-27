@@ -1,6 +1,6 @@
 "use client";
-import { MoviesList } from "@/components/MoviesList/MoviesList";
+import { MoviesCards } from "@/components/MoviesCards/MoviesCards";
 
 export default function Home() {
-  return <MoviesList />;
+  return <MoviesCards />;
 }
