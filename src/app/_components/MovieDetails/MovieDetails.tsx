@@ -5,6 +5,7 @@ import SectionTitle from "../SectionTitle/Sectiontitle";
 import dynamic from "next/dynamic";
 import Badges from "../Badges/Badges";
 
+//! fix : Error Hydration failed because the initial UI does not match what was rendered on the server.
 const VideoPlayer = dynamic(() => import("../VideoPlayer/VideoPlayer"), {
   ssr: false,
 });
@@ -42,6 +43,7 @@ const MovieDetails = ({ details }: props) => {
               <Badges data={details?.countries} />
             </div>
           )}
+
           {details?.actors?.length && (
             <div className={styles.movie_details__actors}>
               <SectionTitle title="Актеры" />
