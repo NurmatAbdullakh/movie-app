@@ -5,6 +5,7 @@ import MovieDetails from "../_components/MovieDetails/MovieDetails";
 interface Params {
   id: string;
 }
+export const dynamic = "force-dynamic";
 
 const SingleMoviePage: FC<{ params: Params }> = async ({ params }) => {
   try {
