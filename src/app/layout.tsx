@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
+
 import "./style/globals.scss";
 import ReactQueryProvider from "@/providers/ReactQuerryProvider";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Movies App",
@@ -21,6 +20,30 @@ export const metadata: Metadata = {
     ],
   },
 };
+const myFont = localFont({
+  src: [
+    {
+      path: "./style/fonts/Inter-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./style/fonts/Inter-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./style/fonts/Inter-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./style/fonts/Inter-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
 
 export default function RootLayout({
   children,
@@ -28,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={myFont.className}>
+      <body>
         <ReactQueryProvider>
           <div className="wrapper">
             <Header />
