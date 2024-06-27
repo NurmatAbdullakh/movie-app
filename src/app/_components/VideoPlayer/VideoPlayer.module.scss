@@ -11,24 +11,47 @@
     padding: 10px;
     background: #333;
     color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
-.playingBtn{
-    margin-right: 10px;
-    width: 60px;
-    height: 30px;
-    border-radius: 10px;
+.controlsTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    .progressbar{
+        flex: 1;
+        margin: 0 10px;
+        appearance: none;
+        background: #555;
+        height: 5px;
+        border-radius: 5px;
+        outline: none;
+    }
 }
 
-.progressbar{
-    flex: 1;
-    margin: 0 10px;
-    appearance: none;
-    background: #555;
-    height: 5px;
-    border-radius: 5px;
-    outline: none;
+.controlsBottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    
+    .playingBtn{
+        margin-right: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    .volumeContainer{
+        display: flex;
+        align-items: center;
+        justify-items: end;
+        gap: 5px;
+        flex-grow: 1;
+        .volumeBar{
+            width: 70px;
+            height: 4px;
+        }
+    }
+
 }
+
+

@@ -2,18 +2,21 @@
 import React, { useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import styles from "./VideoPlayer.module.scss";
+import Image from "next/image";
 
 const VideoPlayer = () => {
   const [playing, setPlaying] = useState(false);
   const [playedSeconds, setPlayedSeconds] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [muted, setMuted] = useState(false); // Initially not muted
-  const [volume, setVolume] = useState(0.5); // Initial volume level
+  const [muted, setMuted] = useState(false);
+  const [volume, setVolume] = useState(0.5);
   const playerRef = useRef<ReactPlayer>(null);
 
   const handleTogglePlayPause = () => {
-    setPlaying(!playing); // Toggle play state
+    console.log("Toggle play/pause");
+
+    setPlaying(!playing);
   };
 
   const handleProgress = (state: { playedSeconds: number }) => {
@@ -45,76 +48,107 @@ const VideoPlayer = () => {
 
   const handleFullscreen = () => {
     if (!isFullscreen) {
-      // Enter fullscreen
       if (playerRef.current) {
-        (playerRef.current as any).wrapper?.requestFullscreen(); // Adjusted to access the wrapper for fullscreen
+        (playerRef.current as any).wrapper?.requestFullscreen();
       }
     }
     setIsFullscreen(!isFullscreen);
   };
 
   const handleToggleMute = () => {
-    setMuted(!muted);
-    setVolume(muted ? 0.5 : volume); // Adjust volume based on mute state
+    setMuted((muted) => {
+      if (muted) {
+        setVolume(0.5);
+      } else {
+        setVolume(0);
+      }
+      return !muted;
+    });
   };
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
     setMuted(newVolume === 0);
-
-    // ReactPlayer handles volume directly through props
   };
 
   return (
     <div className={styles.player}>
       <ReactPlayer
-        url="/p2b1azt1efyzb86kzpmm.mp4" // Replace with your local video path
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        onReady={() => setDuration(playerRef.current?.getDuration() || 0)}
+        url="https://www.youtube.com/watch?v=1rU7ShHAGXQ"
         controls={false}
         width="100%"
         height="100%"
         ref={playerRef}
         muted={muted}
-        volume={volume} // Pass volume state to ReactPlayer
+        volume={volume}
         playing={playing}
         onProgress={handleProgress}
         onDuration={handleDuration}
         config={{
           file: {
-            forceVideo: true, // Ensure using video format
+            forceVideo: true,
           },
         }}
       />
       <div className={styles.controls}>
-        <button className={styles.playingBtn} onClick={handleTogglePlayPause}>
-          {playing ? "Pause" : "Play"}
-        </button>
-        <input
-          className={styles.progressbar}
-          type="range"
-          min={0}
-          max={duration}
-          value={playedSeconds}
-          onChange={handleSeekChange}
-        />
-        <span className={styles.timeDisplay}>
-          {formatDuration(playedSeconds)} / {formatDuration(duration)}
-        </span>
-        <button className={styles.muteBtn} onClick={handleToggleMute}>
-          {muted ? "Unmute" : "Mute"}
-        </button>
-        <input
-          className={styles.volumeBar}
-          type="range"
-          min={0}
-          max={1}
-          step={0.01}
-          value={volume}
-          onChange={handleVolumeChange}
-        />
-        <button className={styles.fullscreenBtn} onClick={handleFullscreen}>
-          Fullscreen
-        </button>
+        <div className={styles.controlsTop}>
+          <span className={styles.timeDisplay}>
+            {formatDuration(playedSeconds)}
+          </span>
+          <input
+            className={styles.progressbar}
+            type="range"
+            min={0}
+            max={duration}
+            value={playedSeconds}
+            onChange={handleSeekChange}
+          />
+          <span className={styles.timeDisplay}>{formatDuration(duration)}</span>
+        </div>
+        <div className={styles.controlsBottom}>
+          <button className={styles.playingBtn} onClick={handleTogglePlayPause}>
+            <Image
+              src={playing ? "/pause-svgrepo-com.svg" : "/play-svgrepo-com.svg"}
+              alt="fullscreen"
+              width={20}
+              height={20}
+            />
+          </button>
+          <div className={styles.volumeContainer}>
+            <button className={styles.muteBtn} onClick={handleToggleMute}>
+              <Image
+                src={
+                  muted ? "/mute-svgrepo-com.svg" : "/unmute-svgrepo-com.svg"
+                }
+                alt="fullscreen"
+                width={20}
+                height={20}
+              />
+            </button>
+            <input
+              className={styles.volumeBar}
+              width={70}
+              type="range"
+              min={0}
+              max={1}
+              step={0.01}
+              value={volume}
+              onChange={handleVolumeChange}
+            />
+          </div>
+          <button className={styles.fullscreenBtn} onClick={handleFullscreen}>
+            <Image
+              src="/fullscreen-svgrepo-com.svg"
+              alt="fullscreen"
+              width={20}
+              height={20}
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
