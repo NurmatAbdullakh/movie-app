@@ -1,8 +1,8 @@
 
 {
     "headers": [
-        {
-      "source": "*",
+      {
+      "source": "/[id]",
       "headers": [
         {
           "key": "Autorization",
