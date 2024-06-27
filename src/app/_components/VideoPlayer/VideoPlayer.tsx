@@ -8,7 +8,6 @@ const VideoPlayer = () => {
   const [playing, setPlaying] = useState(false);
   const [playedSeconds, setPlayedSeconds] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const playerRef = useRef<ReactPlayer>(null);
@@ -45,12 +44,9 @@ const VideoPlayer = () => {
   };
 
   const handleFullscreen = () => {
-    if (!isFullscreen) {
-      if (playerRef.current) {
-        (playerRef.current as any).wrapper?.requestFullscreen();
-      }
+    if (playerRef.current) {
+      (playerRef.current as any).wrapper?.requestFullscreen();
     }
-    setIsFullscreen(!isFullscreen);
   };
 
   const handleToggleMute = () => {
