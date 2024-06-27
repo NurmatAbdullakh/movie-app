@@ -5,6 +5,7 @@ import useIntersectionObserver from "@/hooks/useIntersectiongObserver";
 import { useEffect, useRef } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import styles from "./MoviesList.module.scss";
+import Loader from "../Loader/Loader";
 
 export const MoviesList = () => {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -22,14 +23,16 @@ export const MoviesList = () => {
   const movies = data?.pages.flatMap((page) => page?.data?.movies) || [];
 
   return (
-    <div>
+    <section className={styles.movies}>
       <div className={styles.movies_cards}>
         {movies?.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
       <div style={{ height: "10px" }} ref={targetRef} />
-      {isLoading || (isFetching && <div>Loading...</div>)}
-    </div>
+      <div className={styles.movies_loader}>
+        {isLoading || (isFetching && <Loader />)}
+      </div>
+    </section>
   );
 };
