@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["files.cinerama.uz"],
+    domains: ["files.cinerama.uz", "archive.org"],
     loader: "default",
   },
 };
