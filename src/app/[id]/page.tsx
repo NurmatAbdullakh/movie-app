@@ -19,16 +19,7 @@ const SingleMoviePage: FC<{ params: Params }> = async ({ params }) => {
     console.log("Fetching movie with ID:", params.id);
 
     // Fetch the movie data
-    const res = await fetch(
-      `https://api.cinerama.uz/test/movies/view?module_id=3&id=${params.id}`,
-      {
-        headers: {
-          Authorization: `Bearer DrTVm2Bi8pHE75xYsM94fjciuAhju2XM`,
-          "Content-Type": "application/json",
-        },
-        cache: "no-cache",
-      }
-    );
+    const res = await fetch(`https://jsonplaceholder.typicode.com/todos/1`);
 
     if (!res.ok) {
       throw new Error(`Server-side fetch failed with status ${res.status}`);
@@ -37,10 +28,6 @@ const SingleMoviePage: FC<{ params: Params }> = async ({ params }) => {
     // Parse the JSON response
     const data: MovieData = await res.json();
     console.log("Fetched data:", data);
-
-    if (data.data.length === 0) {
-      console.warn("No movie found for ID:", params.id);
-    }
 
     return (
       <div>
