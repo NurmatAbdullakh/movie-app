@@ -15,6 +15,10 @@ interface props {
 }
 
 const MovieDetails = ({ details }: props) => {
+  const haveGenres = details?.genres?.length;
+  const haveCountries = details?.countries?.length;
+  const haveActors = details?.actors?.length;
+
   return (
     <>
       <div className={styles.movie_details}>
@@ -26,29 +30,29 @@ const MovieDetails = ({ details }: props) => {
           <div className={`${styles.movie_details__year} xl-500`}>
             {details?.year}
           </div>
-          <div className={`${styles.movie_details__description} md`}>
+          <p className={`${styles.movie_details__description} md`}>
             {details?.description}
-          </div>
+          </p>
 
-          {details?.genres?.length && (
-            <div className={styles.movie_details__genres}>
+          {haveGenres && (
+            <section className={styles.movie_details__genres}>
               <SectionTitle title="Жанр" />
               <Badges data={details?.genres} />
-            </div>
+            </section>
           )}
 
-          {details?.countries?.length && (
-            <div className={styles.movie_details__countries}>
+          {haveCountries && (
+            <section className={styles.movie_details__countries}>
               <SectionTitle title="Страна" />
               <Badges data={details?.countries} />
-            </div>
+            </section>
           )}
 
-          {details?.actors?.length && (
-            <div className={styles.movie_details__actors}>
+          {haveActors && (
+            <section className={styles.movie_details__actors}>
               <SectionTitle title="Актеры" />
               <Actors actors={details?.actors} />
-            </div>
+            </section>
           )}
         </div>
       </div>
