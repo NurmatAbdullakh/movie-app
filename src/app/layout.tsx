@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Movies App",
     description:
-      "Movies App - is a Next.js project, when you can watch top movies from top countries.",
+      "Movies App - is a Next.js project, where you can watch top movies from top countries.",
     images: [
       "https://static.javatpoint.com/androidpages/images/movie-apps-for-android12.png",
     ],
