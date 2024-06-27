@@ -1,4 +1,3 @@
-"use client";
 import { IMovieDetails } from "@/api/movies/movies.types";
 import styles from "./MovieDetails.module.scss";
 import Actors from "../Actors/Actors";
@@ -15,8 +14,6 @@ interface props {
 }
 
 const MovieDetails = ({ details }: props) => {
-  console.log("details", details);
-
   return (
     <>
       <div className={styles.movie_details}>
@@ -32,24 +29,24 @@ const MovieDetails = ({ details }: props) => {
             {details?.description}
           </div>
 
-          {details?.genres && (
-            <>
+          {details?.genres?.length && (
+            <div className={styles.movie_details__genres}>
               <SectionTitle title="Жанр" />
               <Badges data={details?.genres} />
-            </>
+            </div>
           )}
 
-          {details?.countries && (
-            <>
+          {details?.countries?.length && (
+            <div className={styles.movie_details__countries}>
               <SectionTitle title="Страна" />
               <Badges data={details?.countries} />
-            </>
+            </div>
           )}
-          {details?.actors && (
-            <>
+          {details?.actors?.length && (
+            <div className={styles.movie_details__actors}>
               <SectionTitle title="Актеры" />
               <Actors actors={details?.actors} />
-            </>
+            </div>
           )}
         </div>
       </div>
