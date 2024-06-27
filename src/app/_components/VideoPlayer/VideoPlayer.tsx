@@ -1,26 +1,27 @@
 "use client";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import styles from "./VideoPlayer.module.scss";
 
 const VideoPlayer = () => {
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [playedSeconds, setPlayedSeconds] = useState(0);
   const [duration, setDuration] = useState(0);
   const playerRef = useRef<ReactPlayer>(null);
 
   const handleTogglePlayPause = () => {
+    setPlaying(!playing); // Toggle play state
+
     if (playerRef.current) {
       if (playing) {
-        playerRef.current.getInternalPlayer().pauseVideo();
+        playerRef.current.getInternalPlayer().pause();
       } else {
-        playerRef.current.getInternalPlayer().playVideo();
+        playerRef.current.getInternalPlayer().play();
       }
-      setPlaying(!playing);
     }
   };
 
-  const handleProgress = (state: { playedSeconds: number; played: number }) => {
+  const handleProgress = (state: { playedSeconds: number }) => {
     setPlayedSeconds(state.playedSeconds);
   };
 
@@ -30,9 +31,10 @@ const VideoPlayer = () => {
 
   const handleSeekChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const seekTime = parseFloat(e.target.value);
+    setPlayedSeconds(seekTime);
+
     if (playerRef.current) {
       playerRef.current.seekTo(seekTime);
-      setPlayedSeconds(seekTime);
     }
   };
 
@@ -47,23 +49,19 @@ const VideoPlayer = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div className={styles.videoPlayer}>
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=U8XH3W0cMss"
+        url="/p2b1azt1efyzb86kzpmm.mp4" // Replace with your local video path
         controls={false}
         width="100%"
         height="100%"
         ref={playerRef}
-        muted={true}
         playing={playing}
         onProgress={handleProgress}
         onDuration={handleDuration}
       />
       <div className={styles.controls}>
-        <button
-          className={styles["playing-btn"]}
-          onClick={handleTogglePlayPause}
-        >
+        <button className={styles.playingBtn} onClick={handleTogglePlayPause}>
           {playing ? "Pause" : "Play"}
         </button>
         <input
@@ -74,7 +72,7 @@ const VideoPlayer = () => {
           value={playedSeconds}
           onChange={handleSeekChange}
         />
-        <span style={{ marginLeft: "10px" }}>
+        <span className={styles.timeDisplay}>
           {formatDuration(playedSeconds)} / {formatDuration(duration)}
         </span>
       </div>
