@@ -22,9 +22,9 @@ export default async function SingleMoviePage({
     const data = await res.json();
     console.log("Server-side fetch data:", data);
 
-    return <>{JSON.stringify(data)}</>;
+    return <div style={{ color: "white" }}>{JSON.stringify(data)}</div>;
   } catch (error: any) {
     console.error("Server-side fetch error:", error.message);
-    return <>Error: {error.message}</>;
+    return <div style={{ color: "white" }}>Error: {error.message}</div>;
   }
 }
