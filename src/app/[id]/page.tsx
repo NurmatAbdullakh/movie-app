@@ -1,5 +1,4 @@
 "use client";
-import { IMovieDetailsResponse } from "@/api/movies/movies.types";
 import { FC } from "react";
 import MovieDetails from "../_components/MovieDetails/MovieDetails";
 import { useMoviesGetByIdQuery } from "@/api/movies/movies.service";
