@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import styles from "./VideoPlayer.module.scss";
 import Image from "next/image";
@@ -24,7 +24,7 @@ const VideoPlayer = () => {
     setDuration(duration);
   };
 
-  const handleSeekChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSeekChange = (e: ChangeEvent<HTMLInputElement>) => {
     const seekTime = parseFloat(e.target.value);
     setPlayedSeconds(seekTime);
 
@@ -60,7 +60,7 @@ const VideoPlayer = () => {
     });
   };
 
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVolumeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
     setMuted(newVolume === 0);

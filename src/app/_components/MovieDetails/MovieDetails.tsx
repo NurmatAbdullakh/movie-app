@@ -4,6 +4,7 @@ import Actors from "../Actors/Actors";
 import SectionTitle from "../SectionTitle/Sectiontitle";
 import dynamic from "next/dynamic";
 import Badges from "../Badges/Badges";
+import Image from "next/image";
 
 //! fix : Error Hydration failed because the initial UI does not match what was rendered on the server.
 const VideoPlayer = dynamic(() => import("../VideoPlayer/VideoPlayer"), {
@@ -22,13 +23,27 @@ const MovieDetails = ({ details }: props) => {
   return (
     <>
       <div className={styles.movie_details}>
-        <div className={styles.movie_details__container}>
-          <div className={styles.movie_details__banner}>
+        <div className={`${styles.movie_details__container} container`}>
+          <div className={styles.movie_details__video}>
             <VideoPlayer />
           </div>
-          <h1 className={styles.movie_details__title}>{details?.title}</h1>
-          <div className={`${styles.movie_details__year} xl-500`}>
-            {details?.year}
+          <div className={styles.movie_details__info}>
+            <div className={styles.movie_details__poster}>
+              <Image
+                className={styles.movie_details__poster}
+                src={details?.poster || ""}
+                alt={details?.title || ""}
+                fill
+                placeholder="blur"
+                blurDataURL="/images/overlay.png"
+              />
+            </div>
+            <div className={styles.movie_details__data}>
+              <h1 className={styles.movie_details__title}>{details?.title}</h1>
+              <div className={`${styles.movie_details__year} xl-500`}>
+                {details?.year}
+              </div>
+            </div>
           </div>
           <p className={`${styles.movie_details__description} md`}>
             {details?.description}
